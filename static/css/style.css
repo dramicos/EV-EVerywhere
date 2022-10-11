@@ -1,0 +1,19 @@
+#map
+{
+    min-height: 100%;
+    min-width: 100%;
+    display: block;
+}
+
+html, body
+{
+    height: 100%;
+}
+
+.leaflet-container {
+  height: 800px;
+  width: 1000px;
+  max-width: 100%;
+  max-height: 100%;
+}
+
