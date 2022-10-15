@@ -4,64 +4,52 @@
 <head>
   <meta charset="utf-8">
   <title>Electric Vehicle Exporation</title>
-<!-- Bring in the Bootstrap stylesheet -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
-  <!-- Leaflet CSS -->
-  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css"
-    integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
-    crossorigin="" />
-
-  <!-- Leaflet JavaScript code -->
-  <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"
-    integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew=="
-    crossorigin=""></script>
-
-  <!-- D3 Library -->
+  <!-- D3, JQuery and Bootstrap Libraries -->
   <script src="https://d3js.org/d3.v5.min.js"></script>
-
-  <!-- Range slider code -->
-  <!-- <script src="d3RangeSlider.js"></script> -->
-  <!-- Range slider style -->
-  <!-- <link href="d3RangeSlider.css" rel="stylesheet"> -->
-
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/11.0.2/css/bootstrap-slider.css" integrity="sha512-SZgE3m1he0aEF3tIxxnz/3mXu/u/wlMNxQSnE0Cni9j/O8Gs+TjM9tm1NX34nRQ7GiLwUEzwuE3Wv2FLz2667w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha256-4+XzXVhsDmqanXGHaHvgh1gMQKX40OUvDEBTu8JcmNs=" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/11.0.2/bootstrap-slider.js" integrity="sha512-tCkLWlSXiiMsUaDl5+8bqwpGXXh0zZsgzX6pB9IQCZH+8iwXRYfcCpdxl/owoM6U4ap7QZDW4kw7djQUiQ4G2A==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+ 
+  <!-- CSS for slider -->
+  <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"> -->
   <!-- Our CSS -->
   <link rel="stylesheet" type="text/css" href="static/css/style.css">
 </head>
 
 <body>
-    <div class="jumbotron text-center">
-        <h1>Electric Vehicle Growth</h1>
-        <!-- Stick the Year slider here -->
-        <div id="slider-container"></div>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12 jumbotron text-center">
+        <h1><b>Electric Vehicle Growth</b></h1>
+        <p>Use the interactive charts below to explore the dataset</p>
+        <div id="slider-container">
+          <p>Filter by year interval: <b>2010  :</b> <input id="years" type="int" class="span2" value="" data-slider-min="2010" data-slider-max="2021" data-slider-step="1" data-slider-value="[2010,2021]"/> <b>:  2021</b><br/></p>
+        </div>
+      </div>
     </div>
-  
-    <!-- The table where we'll insert our map to make it look nice without full screen-->
-    <!-- We can put our other plots in the table too-->
-    <table role="presentation">
-      <tbody>
-        <tr>
-          <td style="text-align: center; border: none; padding-left: 100px;">
-            <iframe src={{ url_for("map") }} width="980" height="800"></iframe>
-          </td>
-        </tr>
-        <tr>
-          <td style="text-align: center; border: none">
-            <small><a href= {{ url_for("map") }}>Full Screen Map</a></small>
-          </td>
-        </tr>
-        <tr>
-          <td>
-            <div id="fill-plot"></div>
-          </td>
-          <td>
-            <div id="bar-plot"></div>
-          </td>          
-        </tr>
-      </tbody>
-    </table>
+    <div class="row">
+      <div class="col-lg-12">
+        <iframe src={{ url_for("map") }} width="800" height="600"></iframe>
+      </div>           
+    </div>
+    <div class="row">
+      <small><a href= {{ url_for("map") }}>Full Screen Map</a></small>
+    </div>
+    <div class="row">
+      <div class="col-lg-6">
+        <div id="fill-plot"></div>
+      </div>
+      <div class="col-lg-6">
+        <div id="bar-plot"></div>
+      </div>
+    </div>
+  </div>
 
-  <!-- JavaScript file for index page -->
-  <script type="text/javascript" src="static/js/main.js"></script>
+  <!-- JavaScript files for index page -->
+<script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+<script type="text/javascript" src="static/js/main.js"></script>
 </body>
 
 </html>
